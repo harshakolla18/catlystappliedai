@@ -50,12 +50,14 @@
 import About from './pages/About';
 import Home from './pages/Home';
 import ServiceDetail from './pages/ServiceDetail';
+import TermsAndConditions from './pages/TermsAndConditions';
 
 
 export const PAGES = {
     "About": About,
     "Home": Home,
     "ServiceDetail": ServiceDetail,
+    "TermsAndConditions": TermsAndConditions,
 }
 
 export const pagesConfig = {

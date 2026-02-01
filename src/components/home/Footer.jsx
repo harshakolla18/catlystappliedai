@@ -39,12 +39,12 @@ export default function Footer() {
                             Contact
                         </a>
                         <span className="text-slate-700">|</span>
-                        <a
-                            href="#"
+                        <Link
+                            to={createPageUrl('TermsAndConditions')}
                             className="text-slate-400 hover:text-cyan-400 transition-colors text-sm"
                         >
-                            Privacy Policy
-                        </a>
+                            Terms & Conditions
+                        </Link>
                     </div>
                 </div>
             </div>
