@@ -204,7 +204,7 @@ export default function About() {
                 </div>
             </section>
 
-            {/* Team Section */}
+            {/* Team Section - commented out
             <section className="py-20 px-4">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
@@ -227,10 +227,7 @@ export default function About() {
                                 className="group p-6 rounded-2xl bg-slate-800/30 border border-slate-700/50 hover:bg-slate-800/50 transition-all duration-300"
                             >
                                 <div className="relative w-40 h-40 mx-auto mb-6">
-                                    {/* Glow Effect */}
                                     <div className={`absolute inset-0 bg-gradient-to-br ${member.color || 'from-cyan-500 to-blue-500'} blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500`} />
-
-                                    {/* Image Container */}
                                     <div className={`relative w-full h-full rounded-full shadow-xl group-hover:scale-105 transition-transform duration-500 ${member.addBorder ? 'bg-black flex items-center justify-center' : 'overflow-hidden border-2 border-slate-700/50'}`}>
                                         {member.addBorder ? (
                                             <div className="w-[85%] h-[85%] rounded-full overflow-hidden relative">
@@ -277,6 +274,7 @@ export default function About() {
                     </div>
                 </div>
             </section>
+            */}
 
             {/* Timeline */}
             <section className="py-20 px-4 bg-slate-900/30">
