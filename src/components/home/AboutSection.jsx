@@ -54,19 +54,19 @@ export default function AboutSection() {
                             We bridge the gap between potential and performance, unlocking opportunities that drive real business value.
                         </p>
 
-                        {/* Stats */}
+                        {/* Values */}
                         <div className="grid grid-cols-3 gap-6 mb-8">
                             <div className="text-center p-4 rounded-xl bg-slate-800/50 border border-slate-700">
-                                <div className="text-3xl font-bold text-cyan-400">100+</div>
-                                <div className="text-sm text-slate-400 mt-1">Projects Delivered</div>
+                                <div className="text-2xl font-bold text-cyan-400">Innovation</div>
+                                <div className="text-sm text-slate-400 mt-1">Cutting-Edge Solutions</div>
                             </div>
                             <div className="text-center p-4 rounded-xl bg-slate-800/50 border border-slate-700">
-                                <div className="text-3xl font-bold text-cyan-400">50+</div>
-                                <div className="text-sm text-slate-400 mt-1">Happy Clients</div>
+                                <div className="text-2xl font-bold text-cyan-400">Quality</div>
+                                <div className="text-sm text-slate-400 mt-1">Excellence in Delivery</div>
                             </div>
                             <div className="text-center p-4 rounded-xl bg-slate-800/50 border border-slate-700">
-                                <div className="text-3xl font-bold text-blue-400">95%</div>
-                                <div className="text-sm text-slate-400 mt-1">Success Rate</div>
+                                <div className="text-2xl font-bold text-blue-400">Trust</div>
+                                <div className="text-sm text-slate-400 mt-1">Client-Focused Approach</div>
                             </div>
                         </div>
 

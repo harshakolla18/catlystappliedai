@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight, CheckCircle, Clock, TrendingUp, Users, Zap } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import Navbar from '../components/home/Navbar';
@@ -25,16 +25,10 @@ const servicesData = {
             { step: 3, title: 'Roadmap', description: 'You receive a prioritized implementation plan' },
             { step: 4, title: 'Presentation', description: 'We present findings with clear recommendations' }
         ],
-        caseStudy: {
-            company: 'Regional Healthcare Provider',
-            challenge: 'Manual patient scheduling causing 40% admin overhead',
-            solution: 'AI-powered scheduling optimization',
-            results: ['65% reduction in scheduling time', '32% increase in patient satisfaction', '$180K annual savings']
-        },
         stats: [
-            { value: '40%', label: 'Average cost reduction identified' },
-            { value: '2 weeks', label: 'Typical assessment duration' },
-            { value: '95%', label: 'Client satisfaction rate' }
+            { value: 'Efficiency', label: 'Cost optimization focus' },
+            { value: 'Speed', label: 'Rapid assessment process' },
+            { value: 'Quality', label: 'Client-centered approach' }
         ]
     },
     'custom-ai-solutions': {
@@ -54,16 +48,10 @@ const servicesData = {
             { step: 3, title: 'Development', description: 'Agile build with regular demos' },
             { step: 4, title: 'Deployment', description: 'Production rollout with training' }
         ],
-        caseStudy: {
-            company: 'E-commerce Platform',
-            challenge: 'Manual product descriptions for 50,000+ SKUs',
-            solution: 'Custom generative AI content engine',
-            results: ['90% faster content creation', '25% increase in conversion rates', '3x product catalog expansion']
-        },
         stats: [
-            { value: '100+', label: 'Custom solutions delivered' },
-            { value: '3-6 mo', label: 'Average development time' },
-            { value: '85%', label: 'Solutions exceed expectations' }
+            { value: 'Custom', label: 'Tailored solutions' },
+            { value: 'Agile', label: 'Flexible development' },
+            { value: 'Excellence', label: 'Quality-driven results' }
         ]
     },
     'workflow-automation': {
@@ -83,16 +71,10 @@ const servicesData = {
             { step: 3, title: 'Integration', description: 'Connect systems and implement automations' },
             { step: 4, title: 'Optimization', description: 'Monitor and continuously improve' }
         ],
-        caseStudy: {
-            company: 'Financial Services Firm',
-            challenge: 'Manual document processing taking 4 hours per client',
-            solution: 'AI-powered document extraction and routing',
-            results: ['85% reduction in processing time', '99.2% accuracy rate', '12 FTEs reallocated to high-value work']
-        },
         stats: [
-            { value: '70%', label: 'Average time savings' },
-            { value: '500+', label: 'Workflows automated' },
-            { value: '99%', label: 'Accuracy improvement' }
+            { value: 'Efficiency', label: 'Time-saving focus' },
+            { value: 'Scale', label: 'Comprehensive automation' },
+            { value: 'Precision', label: 'Accuracy-driven' }
         ]
     },
     'data-engineering': {
@@ -112,16 +94,10 @@ const servicesData = {
             { step: 3, title: 'Build', description: 'Implement pipelines and integrations' },
             { step: 4, title: 'Validate', description: 'Ensure data quality and governance' }
         ],
-        caseStudy: {
-            company: 'Retail Chain',
-            challenge: 'Siloed data across 200+ locations preventing insights',
-            solution: 'Unified data platform with real-time analytics',
-            results: ['360° customer view achieved', '45% improvement in inventory accuracy', '$2.3M saved in first year']
-        },
         stats: [
-            { value: '10PB+', label: 'Data managed' },
-            { value: '50+', label: 'Data platforms built' },
-            { value: '99.9%', label: 'Uptime guaranteed' }
+            { value: 'Scalable', label: 'Enterprise-ready' },
+            { value: 'Robust', label: 'Reliable platforms' },
+            { value: 'Secure', label: 'High availability' }
         ]
     },
     'ai-implementation': {
@@ -141,16 +117,10 @@ const servicesData = {
             { step: 3, title: 'Integration', description: 'Connect with existing systems' },
             { step: 4, title: 'Rollout', description: 'Phased deployment with support' }
         ],
-        caseStudy: {
-            company: 'Law Firm',
-            challenge: 'Attorneys spending 30% of time on document review',
-            solution: 'Secure GPT implementation with custom guardrails',
-            results: ['60% faster document review', 'Full compliance maintained', '$500K annual productivity gain']
-        },
         stats: [
-            { value: '200+', label: 'Implementations completed' },
-            { value: '100%', label: 'Compliance rate' },
-            { value: '4 weeks', label: 'Average deployment time' }
+            { value: 'Proven', label: 'Successful implementations' },
+            { value: 'Compliant', label: 'Full regulatory adherence' },
+            { value: 'Swift', label: 'Rapid deployment' }
         ]
     },
     'training-support': {
@@ -170,16 +140,10 @@ const servicesData = {
             { step: 3, title: 'Delivery', description: 'Interactive workshops and hands-on labs' },
             { step: 4, title: 'Support', description: 'Ongoing coaching and resources' }
         ],
-        caseStudy: {
-            company: 'Manufacturing Company',
-            challenge: 'Workforce resistant to AI adoption',
-            solution: 'Comprehensive AI literacy and skills program',
-            results: ['92% employee engagement with AI tools', '40+ internal AI champions created', '3x faster AI project adoption']
-        },
         stats: [
-            { value: '5000+', label: 'Professionals trained' },
-            { value: '98%', label: 'Recommend our training' },
-            { value: '4.9/5', label: 'Average rating' }
+            { value: 'Expert', label: 'Professional training' },
+            { value: 'Trusted', label: 'Highly recommended' },
+            { value: 'Rated', label: 'Top-tier quality' }
         ]
     }
 };
@@ -296,50 +260,6 @@ export default function ServiceDetail() {
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            {/* Case Study */}
-            <section className="py-20 px-4 bg-slate-900/30">
-                <div className="max-w-7xl mx-auto">
-                    <div className="text-center mb-12">
-                        <span className="text-cyan-400 text-sm font-semibold tracking-widest uppercase">Success Story</span>
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mt-4">Case Study</h2>
-                    </div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="bg-slate-800/30 rounded-2xl p-8 md:p-12 border border-slate-700/50"
-                    >
-                        <div className="grid md:grid-cols-3 gap-8">
-                            <div>
-                                <div className="text-cyan-400 text-sm font-semibold uppercase mb-2">Client</div>
-                                <div className="text-white text-xl font-semibold">{service.caseStudy.company}</div>
-                            </div>
-                            <div>
-                                <div className="text-cyan-400 text-sm font-semibold uppercase mb-2">Challenge</div>
-                                <div className="text-slate-300">{service.caseStudy.challenge}</div>
-                            </div>
-                            <div>
-                                <div className="text-cyan-400 text-sm font-semibold uppercase mb-2">Solution</div>
-                                <div className="text-slate-300">{service.caseStudy.solution}</div>
-                            </div>
-                        </div>
-
-                        <div className="mt-8 pt-8 border-t border-slate-700">
-                            <div className="text-cyan-400 text-sm font-semibold uppercase mb-4">Results</div>
-                            <div className="grid md:grid-cols-3 gap-4">
-                                {service.caseStudy.results.map((result, index) => (
-                                    <div key={index} className="flex items-center gap-3 bg-slate-900/50 rounded-lg p-4">
-                                        <TrendingUp className="w-5 h-5 text-cyan-400" />
-                                        <span className="text-white font-medium">{result}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </motion.div>
                 </div>
             </section>
 
