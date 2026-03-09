@@ -214,11 +214,6 @@ export default function TermsAndConditions() {
                         <SubSection title="6. Governing Law">
                             <p>This Agreement is governed by the laws of the Commonwealth of Kentucky.</p>
                         </SubSection>
-
-                        <div className="mt-8 p-6 rounded-xl bg-slate-800/30 border border-slate-700/50 text-sm">
-                            <p><strong>Catalyst Applied AI, LLC</strong><br />By: _______________________<br />Name: Kenny Wallace<br />Title: Owner<br />Date: ______________________</p>
-                            <p className="mt-6"><strong>Assignor</strong><br />Signature: _________________<br />Name: ______________________<br />Date: ______________________</p>
-                        </div>
                     </Section>
 
                     {/* NDA */}
@@ -276,11 +271,6 @@ export default function TermsAndConditions() {
                         <SubSection title="9. Governing Law">
                             <p>This Agreement is governed by the laws of the Commonwealth of Kentucky.</p>
                         </SubSection>
-
-                        <div className="mt-8 p-6 rounded-xl bg-slate-800/30 border border-slate-700/50 text-sm">
-                            <p><strong>Catalyst Applied AI, LLC</strong><br />By: _______________________<br />Name: Kenny Wallace<br />Title: Owner<br />Date: ______________________</p>
-                            <p className="mt-6"><strong>Counterparty</strong><br />Signature: __________________<br />Name: ______________________<br />Title: ______________________<br />Date: ______________________</p>
-                        </div>
                     </Section>
                 </div>
             </section>

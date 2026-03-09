@@ -8,6 +8,7 @@ import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from '@/components/ScrollToTop';
+import FaqChatbot from '@/components/FaqChatbot';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -75,6 +76,7 @@ function App() {
                     <ScrollToTop />
                     <NavigationTracker />
                     <AuthenticatedApp />
+                    <FaqChatbot />
                 </Router>
                 <Toaster />
             </QueryClientProvider>
