@@ -70,6 +70,11 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
+                                <Link to={createPageUrl('Products')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
+                                    Products
+                                </Link>
+                            </li>
+                            <li>
                                 <Link to={createPageUrl('About')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
                                     About Us
                                 </Link>

@@ -49,6 +49,7 @@
  */
 import About from './pages/About';
 import Home from './pages/Home';
+import Products from './pages/Products';
 import ServiceDetail from './pages/ServiceDetail';
 import TermsAndConditions from './pages/TermsAndConditions';
 
@@ -56,6 +57,7 @@ import TermsAndConditions from './pages/TermsAndConditions';
 export const PAGES = {
     "About": About,
     "Home": Home,
+    "Products": Products,
     "ServiceDetail": ServiceDetail,
     "TermsAndConditions": TermsAndConditions,
 }
