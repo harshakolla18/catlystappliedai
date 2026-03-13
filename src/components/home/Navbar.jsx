@@ -19,7 +19,7 @@ export default function Navbar({ showNav }) {
 
     const navItems = [
         { label: 'Services', path: '/#services' },
-        { label: 'About', path: '/About' },
+        // { label: 'About', path: '/About' },
         { label: 'Contact', path: '/#contact' }
     ];
 
