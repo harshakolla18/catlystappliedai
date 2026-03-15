@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, ChevronRight, Search } from 'lucide-react';
 
 const faqs = [
@@ -106,25 +107,57 @@ export default function FaqChatbot() {
     return (
         <>
             {/* Chat Button */}
-            <button
+            <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/20 flex items-center justify-center transition-all duration-300 hover:scale-110 ${isOpen ? 'rotate-0' : 'rotate-0'}`}
+                className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full shadow-lg shadow-blue-500/25 flex items-center justify-center overflow-hidden"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ type: "spring", stiffness: 260, damping: 20, delay: 1 }}
             >
-                {isOpen ? (
-                    <X className="w-6 h-6" />
-                ) : (
-                    <MessageCircle className="w-6 h-6" />
-                )}
-            </button>
+                <AnimatePresence mode="wait">
+                    {isOpen ? (
+                        <motion.div
+                            key="close"
+                            initial={{ rotate: -90, opacity: 0 }}
+                            animate={{ rotate: 0, opacity: 1 }}
+                            exit={{ rotate: 90, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="w-full h-full bg-gradient-to-r from-blue-600 to-blue-500 flex items-center justify-center"
+                        >
+                            <X className="w-6 h-6 text-white" />
+                        </motion.div>
+                    ) : (
+                        <motion.img
+                            key="avatar"
+                            src="/chatbot.jpg"
+                            alt="Chat with us"
+                            className="w-full h-full object-cover"
+                            initial={{ scale: 0.5, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.5, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                        />
+                    )}
+                </AnimatePresence>
+            </motion.button>
 
             {/* Chat Window */}
+            <AnimatePresence>
             {isOpen && (
-                <div className="fixed bottom-24 right-6 z-50 w-80 sm:w-96 bg-[#060a14] rounded-2xl shadow-2xl border border-blue-500/15 overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
+                <motion.div
+                    initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    className="fixed bottom-24 right-6 z-50 w-80 sm:w-96 bg-[#060a14] rounded-2xl shadow-2xl border border-blue-500/15 overflow-hidden"
+                >
                     {/* Header */}
                     <div className="bg-gradient-to-r from-blue-600 to-blue-500 p-4">
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                                <MessageCircle className="w-5 h-5 text-white" />
+                            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/30">
+                                <img src="/chatbot.jpg" alt="AI Assistant" className="w-full h-full object-cover" />
                             </div>
                             <div>
                                 <h3 className="text-white font-semibold">Catalyst AI Assistant</h3>
@@ -134,14 +167,21 @@ export default function FaqChatbot() {
                     </div>
 
                     {/* Messages */}
-                    <div className="h-72 overflow-y-auto p-4 space-y-4">
+                    <div className="h-72 overflow-y-auto p-4 space-y-4 relative">
+                        {/* Background logo watermark */}
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <img src="/logo.jpg" alt="" className="w-28 h-28 object-contain opacity-20 rounded-xl" />
+                        </div>
                         {messages.map((msg, index) => (
                             <div
                                 key={index}
-                                className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                                className={`flex items-end gap-2 ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
                             >
+                                {msg.type === 'bot' && (
+                                    <img src="/chatbot.jpg" alt="" className="w-7 h-7 rounded-full object-cover shrink-0" />
+                                )}
                                 <div
-                                    className={`max-w-[85%] p-3 rounded-2xl text-sm ${
+                                    className={`max-w-[80%] p-3 rounded-2xl text-sm ${
                                         msg.type === 'user'
                                             ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-br-md'
                                             : 'bg-slate-800 text-slate-200 rounded-bl-md'
@@ -196,8 +236,9 @@ export default function FaqChatbot() {
                             </button>
                         )}
                     </div>
-                </div>
+                </motion.div>
             )}
+            </AnimatePresence>
         </>
     );
 }
