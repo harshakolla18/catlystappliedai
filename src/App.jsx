@@ -9,6 +9,7 @@ import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from '@/components/ScrollToTop';
 import FaqChatbot from '@/components/FaqChatbot';
+import FluidWrapper from '@/components/FluidWrapper';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -41,27 +42,29 @@ const AuthenticatedApp = () => {
         }
     }
 
-    // Render the main app
+    // Render the main app with fluid page transitions
     return (
-        <Routes>
-            <Route path="/" element={
-                <LayoutWrapper currentPageName={mainPageKey}>
-                    <MainPage />
-                </LayoutWrapper>
-            } />
-            {Object.entries(Pages).map(([path, Page]) => (
-                <Route
-                    key={path}
-                    path={`/${path}`}
-                    element={
-                        <LayoutWrapper currentPageName={path}>
-                            <Page />
-                        </LayoutWrapper>
-                    }
-                />
-            ))}
-            <Route path="*" element={<PageNotFound />} />
-        </Routes>
+        <FluidWrapper>
+            <Routes>
+                <Route path="/" element={
+                    <LayoutWrapper currentPageName={mainPageKey}>
+                        <MainPage />
+                    </LayoutWrapper>
+                } />
+                {Object.entries(Pages).map(([path, Page]) => (
+                    <Route
+                        key={path}
+                        path={`/${path}`}
+                        element={
+                            <LayoutWrapper currentPageName={path}>
+                                <Page />
+                            </LayoutWrapper>
+                        }
+                    />
+                ))}
+                <Route path="*" element={<PageNotFound />} />
+            </Routes>
+        </FluidWrapper>
     );
 };
 

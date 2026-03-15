@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, ExternalLink, BarChart3, Building2, Server } from 'lucide-react';
 import Navbar from '../components/home/Navbar';
 import Footer from '../components/home/Footer';
+import { fadeUp, staggerContainer, staggerItem } from '@/hooks/useFluidReveal';
 
 const products = [
     {
@@ -37,31 +38,6 @@ const products = [
         hasPreview: true
     }
 ];
-
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.2
-        }
-    }
-};
-
-const cardVariants = {
-    hidden: { opacity: 0, y: 60, scale: 0.95 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: {
-            type: "spring",
-            stiffness: 100,
-            damping: 15,
-            duration: 0.6
-        }
-    }
-};
 
 export default function Products() {
     return (
@@ -115,9 +91,10 @@ export default function Products() {
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        variants={fadeUp}
+                        initial="hidden"
+                        animate="visible"
+                        custom={0}
                     >
                         <motion.span 
                             className="text-blue-400 text-sm font-semibold tracking-widest uppercase inline-block"
@@ -131,7 +108,7 @@ export default function Products() {
                             className="text-4xl md:text-6xl font-bold text-white mt-4 mb-6"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 }}
+                            transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                         >
                             AI Products Built for
                             <span className="bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent"> Business Impact</span>
@@ -140,7 +117,7 @@ export default function Products() {
                             className="text-xl text-slate-300 max-w-3xl mx-auto"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.4 }}
+                            transition={{ delay: 0.4, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                         >
                             Explore our suite of AI-powered products designed to transform how businesses operate, 
                             make decisions, and drive growth.
@@ -166,15 +143,15 @@ export default function Products() {
                 <div className="max-w-6xl mx-auto relative z-10">
                     <motion.div 
                         className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-                        variants={containerVariants}
+                        variants={staggerContainer}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, margin: "-100px" }}
                     >
-                        {products.map((product, index) => (
+                        {products.map((product) => (
                             <motion.div
                                 key={product.id}
-                                variants={cardVariants}
+                                variants={staggerItem}
                                 whileHover={{ 
                                     y: -12,
                                     transition: { type: "spring", stiffness: 300, damping: 20 }
@@ -182,7 +159,7 @@ export default function Products() {
                                 className="group"
                             >
                                 {/* Product Card */}
-                                <div className="relative bg-gradient-to-b from-[#0d1425]/80 to-[#080e1c]/80 rounded-xl border border-blue-500/10 overflow-hidden h-full flex flex-col transition-all duration-500 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-2">
+                                <div className="relative bg-gradient-to-b from-[#0d1425]/80 to-[#080e1c]/80 rounded-xl border border-blue-500/10 overflow-hidden h-full flex flex-col transition-all duration-500 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/10">
                                     {/* Glow Effect */}
                                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                     
@@ -213,19 +190,19 @@ export default function Products() {
                                         </div>
                                     ) : (
                                         <div className="aspect-[16/10] w-full bg-gradient-to-br from-slate-800 via-slate-850 to-slate-900 flex items-center justify-center relative overflow-hidden">
-                                            {/* Background Pattern */}
                                             <div className="absolute inset-0 opacity-10">
                                                 <div className="absolute inset-0" style={{
                                                     backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)',
                                                     backgroundSize: '24px 24px'
                                                 }} />
                                             </div>
-                                            {/* Icon Container */}
                                             <div className="relative">
-                                                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-blue-500/15 flex items-center justify-center group-hover:scale-110 group-hover:border-blue-400/30 transition-all duration-500">
+                                                <motion.div
+                                                    className="w-24 h-24 rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-blue-500/15 flex items-center justify-center group-hover:border-blue-400/30 transition-all duration-500"
+                                                    whileHover={{ scale: 1.1 }}
+                                                >
                                                     <product.icon className="w-12 h-12 text-slate-500 group-hover:text-blue-400 transition-colors duration-500" />
-                                                </div>
-                                                {/* Glow behind icon */}
+                                                </motion.div>
                                                 <div className="absolute inset-0 bg-blue-500/15 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
                                             </div>
                                         </div>
@@ -261,14 +238,16 @@ export default function Products() {
                                         {/* CTA Buttons */}
                                         <div className="flex gap-2">
                                             {product.url ? (
-                                                <Button
-                                                    onClick={() => window.open(product.url, '_blank')}
-                                                    size="sm"
-                                                    className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white flex-1 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all duration-300 text-xs h-9"
-                                                >
-                                                    Visit Product
-                                                    <ExternalLink className="ml-1.5 w-3.5 h-3.5" />
-                                                </Button>
+                                                <motion.div className="flex-1" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
+                                                    <Button
+                                                        onClick={() => window.open(product.url, '_blank')}
+                                                        size="sm"
+                                                        className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all duration-300 text-xs h-9"
+                                                    >
+                                                        Visit Product
+                                                        <ExternalLink className="ml-1.5 w-3.5 h-3.5" />
+                                                    </Button>
+                                                </motion.div>
                                             ) : (
                                                 <Button
                                                     disabled
@@ -278,13 +257,15 @@ export default function Products() {
                                                     Coming Soon
                                                 </Button>
                                             )}
-                                            <Button
-                                                onClick={() => window.location.href = `mailto:sales@catalystappliedai.com?subject=${encodeURIComponent(product.name)} Inquiry`}
-                                                size="sm"
-                                                className="bg-gradient-to-b from-slate-700 to-slate-800 border border-slate-600 text-slate-100 hover:from-slate-600 hover:to-slate-700 hover:border-slate-500 transition-all duration-300 text-xs h-9"
-                                            >
-                                                Inquire
-                                            </Button>
+                                            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
+                                                <Button
+                                                    onClick={() => window.location.href = `mailto:sales@catalystappliedai.com?subject=${encodeURIComponent(product.name)} Inquiry`}
+                                                    size="sm"
+                                                    className="bg-gradient-to-b from-slate-700 to-slate-800 border border-slate-600 text-slate-100 hover:from-slate-600 hover:to-slate-700 hover:border-slate-500 transition-all duration-300 text-xs h-9"
+                                                >
+                                                    Inquire
+                                                </Button>
+                                            </motion.div>
                                         </div>
                                     </div>
                                 </div>
@@ -312,39 +293,23 @@ export default function Products() {
                 
                 <motion.div 
                     className="max-w-4xl mx-auto text-center"
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: '-80px' }}
+                    custom={0}
                 >
-                    <motion.h2 
-                        className="text-3xl md:text-4xl font-bold text-white mb-6"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                    >
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                         More Products Coming Soon
-                    </motion.h2>
-                    <motion.p 
-                        className="text-slate-300 text-lg mb-8"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
-                    >
+                    </h2>
+                    <p className="text-slate-300 text-lg mb-8">
                         We're constantly building new AI-powered tools and platforms. 
                         Subscribe to be the first to know when we launch new products.
-                    </motion.p>
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
-                    >
+                    </p>
+                    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-block">
                         <Button
                             onClick={() => window.location.href = 'mailto:sales@catalystappliedai.com?subject=Product Updates Subscription'}
-                            className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all duration-300"
+                            className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-blue-500/20 hover:shadow-blue-500/35 transition-shadow"
                         >
                             Get Notified
                             <ArrowRight className="ml-2 w-5 h-5" />

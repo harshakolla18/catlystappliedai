@@ -6,6 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import Navbar from '../components/home/Navbar';
 import Footer from '../components/home/Footer';
+import { fadeUp, fadeLeft, fadeRight, staggerContainer, staggerItem } from '@/hooks/useFluidReveal';
 
 const servicesData = {
     'discovery-diagnostic': {
@@ -166,27 +167,38 @@ export default function ServiceDetail() {
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <img
+                    <motion.img
                         src={service.heroImage}
                         alt={service.title}
                         className="w-full h-full object-cover"
+                        initial={{ scale: 1.1, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                        key={serviceId}
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-[#060a14] via-[#060a14]/95 to-[#060a14]/80" />
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4">
-                    <Link
-                        to={createPageUrl('Home')}
-                        className="inline-flex items-center gap-2 text-slate-400 hover:text-blue-400 mb-8 transition-colors"
+                    <motion.div
+                        initial={{ opacity: 0, x: -15 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     >
-                        <ArrowLeft className="w-4 h-4" />
-                        Back to Home
-                    </Link>
+                        <Link
+                            to={createPageUrl('Home')}
+                            className="inline-flex items-center gap-2 text-slate-400 hover:text-blue-400 mb-8 transition-colors group"
+                        >
+                            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                            Back to Home
+                        </Link>
+                    </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
+                        variants={fadeUp}
+                        initial="hidden"
+                        animate="visible"
+                        custom={0.1}
                         key={serviceId}
                     >
                         <span className="text-blue-400 text-sm font-semibold tracking-widest uppercase">Our Services</span>
@@ -199,20 +211,24 @@ export default function ServiceDetail() {
             {/* Stats Bar */}
             <section className="bg-[#0d1425]/50 border-y border-blue-500/10">
                 <div className="max-w-7xl mx-auto px-4 py-8">
-                    <div className="grid grid-cols-3 gap-8">
+                    <motion.div
+                        className="grid grid-cols-3 gap-8"
+                        variants={staggerContainer}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
                         {service.stats.map((stat, index) => (
                             <motion.div
                                 key={`${serviceId}-stat-${index}`}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.1 }}
+                                variants={staggerItem}
                                 className="text-center"
                             >
                                 <div className="text-3xl md:text-4xl font-bold text-blue-400">{stat.value}</div>
                                 <div className="text-slate-400 text-sm mt-1">{stat.label}</div>
                             </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
@@ -220,66 +236,101 @@ export default function ServiceDetail() {
             <section className="py-20 px-4">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid lg:grid-cols-2 gap-16">
-                        <div>
+                        <motion.div
+                            variants={fadeLeft}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: '-80px' }}
+                            custom={0}
+                        >
                             <h2 className="text-3xl font-bold text-white mb-6">Overview</h2>
                             <p className="text-slate-300 text-lg leading-relaxed mb-8">{service.description}</p>
 
                             <h3 className="text-xl font-semibold text-white mb-4">What You Get</h3>
-                            <ul className="space-y-3">
+                            <motion.ul
+                                className="space-y-3"
+                                variants={staggerContainer}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: '-60px' }}
+                            >
                                 {service.benefits.map((benefit, index) => (
-                                    <li key={index} className="flex items-start gap-3">
+                                    <motion.li key={index} className="flex items-start gap-3" variants={staggerItem}>
                                         <CheckCircle className="w-5 h-5 text-blue-400 mt-0.5 shrink-0" />
                                         <span className="text-slate-300">{benefit}</span>
-                                    </li>
+                                    </motion.li>
                                 ))}
-                            </ul>
-                        </div>
+                            </motion.ul>
+                        </motion.div>
 
                         {/* Process */}
-                        <div>
+                        <motion.div
+                            variants={fadeRight}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: '-80px' }}
+                            custom={0.1}
+                        >
                             <h2 className="text-3xl font-bold text-white mb-6">Our Process</h2>
-                            <div className="space-y-6">
+                            <motion.div
+                                className="space-y-6"
+                                variants={staggerContainer}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: '-60px' }}
+                            >
                                 {service.process.map((item, index) => (
                                     <motion.div
                                         key={index}
-                                        initial={{ opacity: 0, x: 20 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: index * 0.1 }}
-                                        className="flex gap-4"
+                                        variants={staggerItem}
+                                        className="flex gap-4 group"
+                                        whileHover={{ x: 6, transition: { duration: 0.2 } }}
                                     >
-                                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-blue-500 flex items-center justify-center shrink-0 text-white font-bold">
+                                        <motion.div
+                                            className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-blue-500 flex items-center justify-center shrink-0 text-white font-bold shadow-lg shadow-blue-500/20"
+                                            whileHover={{ scale: 1.15, rotate: 10 }}
+                                            transition={{ type: "spring", stiffness: 300 }}
+                                        >
                                             {item.step}
-                                        </div>
+                                        </motion.div>
                                         <div>
-                                            <h4 className="text-white font-semibold text-lg">{item.title}</h4>
+                                            <h4 className="text-white font-semibold text-lg group-hover:text-blue-400 transition-colors">{item.title}</h4>
                                             <p className="text-slate-400">{item.description}</p>
                                         </div>
                                     </motion.div>
                                 ))}
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
                     </div>
                 </div>
             </section>
 
             {/* CTA Section */}
             <section className="py-20 px-4">
-                <div className="max-w-3xl mx-auto text-center">
+                <motion.div
+                    className="max-w-3xl mx-auto text-center"
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: '-80px' }}
+                    custom={0}
+                >
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                         Ready to Get Started with {service.title}?
                     </h2>
                     <p className="text-slate-300 text-lg mb-8">
                         Book a free consultation to discuss how we can help transform your business with AI.
                     </p>
-                    <Button
-                        onClick={() => window.location.href = `mailto:sales@catalystappliedai.com?subject=${encodeURIComponent(service.title)} Inquiry`}
-                        className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-10 py-6 text-lg rounded-xl shadow-lg shadow-blue-500/20"
-                    >
-                        Schedule a Consultation
-                        <ArrowRight className="ml-2 w-5 h-5" />
-                    </Button>
-                </div>
+                    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-block">
+                        <Button
+                            onClick={() => window.location.href = `mailto:sales@catalystappliedai.com?subject=${encodeURIComponent(service.title)} Inquiry`}
+                            className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-10 py-6 text-lg rounded-xl shadow-lg shadow-blue-500/20 hover:shadow-blue-500/35 transition-shadow"
+                        >
+                            Schedule a Consultation
+                            <ArrowRight className="ml-2 w-5 h-5" />
+                        </Button>
+                    </motion.div>
+                </motion.div>
             </section>
 
             {/* Navigation */}
@@ -288,19 +339,19 @@ export default function ServiceDetail() {
                     {prevService ? (
                         <Link
                             to={createPageUrl('ServiceDetail') + `?service=${prevService}`}
-                            className="flex items-center gap-2 text-slate-400 hover:text-blue-400 transition-colors"
+                            className="flex items-center gap-2 text-slate-400 hover:text-blue-400 transition-colors group"
                         >
-                            <ArrowLeft className="w-4 h-4" />
+                            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                             {servicesData[prevService].title}
                         </Link>
                     ) : <div />}
                     {nextService && (
                         <Link
                             to={createPageUrl('ServiceDetail') + `?service=${nextService}`}
-                            className="flex items-center gap-2 text-slate-400 hover:text-blue-400 transition-colors"
+                            className="flex items-center gap-2 text-slate-400 hover:text-blue-400 transition-colors group"
                         >
                             {servicesData[nextService].title}
-                            <ArrowRight className="w-4 h-4" />
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </Link>
                     )}
                 </div>

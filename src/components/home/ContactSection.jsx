@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Send, ArrowRight, CheckCircle } from 'lucide-react';
+import { Mail, Send, ArrowRight, CheckCircle } from 'lucide-react';
+import { fadeUp, fadeLeft, fadeRight, scaleUp } from '@/hooks/useFluidReveal';
 
 export default function ContactSection() {
     const [formData, setFormData] = useState({
@@ -43,16 +44,25 @@ export default function ContactSection() {
     return (
         <section id="contact" className="py-24 px-4 bg-[#060a14] relative overflow-hidden">
             {/* Background decoration */}
-            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+            <motion.div
+                className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"
+                animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.5, 0.3] }}
+                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+                className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"
+                animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.45, 0.2] }}
+                transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            />
 
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Section Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: '-80px' }}
+                    custom={0}
                     className="text-center mb-16"
                 >
                     <span className="text-blue-400 text-sm font-semibold tracking-widest uppercase">Get In Touch</span>
@@ -68,14 +78,19 @@ export default function ContactSection() {
                 <div className="grid lg:grid-cols-2 gap-12">
                     {/* Contact Info */}
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        variants={fadeLeft}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: '-80px' }}
+                        custom={0.1}
                         className="space-y-8"
                     >
                         {/* CTA Card */}
-                        <div className="p-8 rounded-2xl bg-gradient-to-br from-blue-500/10 to-blue-600/10 border border-blue-500/15">
+                        <motion.div
+                            className="p-8 rounded-2xl bg-gradient-to-br from-blue-500/10 to-blue-600/10 border border-blue-500/15"
+                            whileHover={{ borderColor: 'rgba(59, 130, 246, 0.35)' }}
+                            transition={{ duration: 0.3 }}
+                        >
                             <h3 className="text-2xl font-bold text-white mb-4">
                                 See How Much Time You Can Save!
                             </h3>
@@ -83,28 +98,37 @@ export default function ContactSection() {
                                 Schedule a free ROI assessment and get a personalized report
                                 on the potential impact AI can have on your business.
                             </p>
-                            <Button
-                                className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-8 py-6 text-lg rounded-xl"
-                                onClick={() => window.location.href = 'mailto:sales@catalystappliedai.com?subject=Request%20for%20Information'}
-                            >
-                                Book Your ROI Assessment
-                                <ArrowRight className="ml-2 w-5 h-5" />
-                            </Button>
-                            <Button
-                                className="mt-3 bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white px-8 py-6 text-lg rounded-xl w-full sm:w-auto"
-                                onClick={() => window.location.href = 'mailto:sales@catalystappliedai.com?subject=Speak%20with%20a%2024%2F7%20Agent'}
-                            >
-                                Speak with a 24/7 Agent
-                            </Button>
-                        </div>
+                            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
+                                <Button
+                                    className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-blue-500/20 hover:shadow-blue-500/35 transition-shadow"
+                                    onClick={() => window.location.href = 'mailto:sales@catalystappliedai.com?subject=Request%20for%20Information'}
+                                >
+                                    Book Your ROI Assessment
+                                    <ArrowRight className="ml-2 w-5 h-5" />
+                                </Button>
+                            </motion.div>
+                            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
+                                <Button
+                                    className="mt-3 bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white px-8 py-6 text-lg rounded-xl w-full sm:w-auto shadow-lg shadow-emerald-500/15 hover:shadow-emerald-500/30 transition-shadow"
+                                    onClick={() => window.location.href = 'mailto:sales@catalystappliedai.com?subject=Speak%20with%20a%2024%2F7%20Agent'}
+                                >
+                                    Speak with a 24/7 Agent
+                                </Button>
+                            </motion.div>
+                        </motion.div>
 
                         {/* Contact Details */}
                         <div className="space-y-4">
-                            <a
+                            <motion.a
                                 href="mailto:sales@catalystappliedai.com"
-                                className="flex items-center gap-4 p-4 rounded-xl bg-[#0d1425]/50 border border-blue-500/10 hover:border-blue-500/30 transition-colors group"
+                                className="flex items-center gap-4 p-4 rounded-xl bg-[#0d1425]/50 border border-blue-500/10 group"
+                                whileHover={{
+                                    y: -3,
+                                    borderColor: 'rgba(59, 130, 246, 0.35)',
+                                    transition: { duration: 0.25 },
+                                }}
                             >
-                                <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
+                                <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
                                     <Mail className="w-5 h-5 text-blue-400" />
                                 </div>
                                 <div>
@@ -113,29 +137,40 @@ export default function ContactSection() {
                                         sales@catalystappliedai.com
                                     </div>
                                 </div>
-                            </a>
+                            </motion.a>
                         </div>
                     </motion.div>
 
                     {/* Contact Form */}
                     <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
+                        variants={fadeRight}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: '-80px' }}
+                        custom={0.2}
                     >
                         {isSubmitted ? (
-                            <div className="h-full flex items-center justify-center p-8 rounded-2xl bg-slate-900/50 border border-slate-800">
+                            <motion.div
+                                className="h-full flex items-center justify-center p-8 rounded-2xl bg-slate-900/50 border border-slate-800"
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                            >
                                 <div className="text-center">
-                                    <div className="w-16 h-16 rounded-full bg-blue-500/15 flex items-center justify-center mx-auto mb-4">
+                                    <motion.div
+                                        className="w-16 h-16 rounded-full bg-blue-500/15 flex items-center justify-center mx-auto mb-4"
+                                        initial={{ scale: 0 }}
+                                        animate={{ scale: 1 }}
+                                        transition={{ type: "spring", delay: 0.2, stiffness: 200 }}
+                                    >
                                         <CheckCircle className="w-8 h-8 text-blue-400" />
-                                    </div>
+                                    </motion.div>
                                     <h3 className="text-xl font-bold text-white mb-2">Thank You!</h3>
                                     <p className="text-slate-400">
                                         We've received your message and will get back to you shortly.
                                     </p>
                                 </div>
-                            </div>
+                            </motion.div>
                         ) : (
                             <form onSubmit={handleSubmit} className="p-8 rounded-2xl bg-[#0d1425]/50 border border-blue-500/10 space-y-6">
                                 <div className="grid sm:grid-cols-2 gap-4">
@@ -145,7 +180,7 @@ export default function ContactSection() {
                                             placeholder="Your name"
                                             value={formData.name}
                                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                            className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500"
+                                            className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500 transition-all duration-300"
                                             required
                                         />
                                     </div>
@@ -156,7 +191,7 @@ export default function ContactSection() {
                                             placeholder="you@company.com"
                                             value={formData.email}
                                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                            className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500"
+                                            className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500 transition-all duration-300"
                                             required
                                         />
                                     </div>
@@ -167,7 +202,7 @@ export default function ContactSection() {
                                         placeholder="Your company name"
                                         value={formData.company}
                                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                                        className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500"
+                                        className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500 transition-all duration-300"
                                     />
                                 </div>
                                 <div>
@@ -176,32 +211,38 @@ export default function ContactSection() {
                                         placeholder="Tell us about your project and how we can help..."
                                         value={formData.message}
                                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                        className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500 min-h-[120px]"
+                                        className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500 min-h-[120px] transition-all duration-300"
                                         required
                                     />
                                 </div>
                                 {error && (
-                                    <p className="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-3">
+                                    <motion.p
+                                        className="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-3"
+                                        initial={{ opacity: 0, y: -8 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                    >
                                         {error}
-                                    </p>
+                                    </motion.p>
                                 )}
-                                <Button
-                                    type="submit"
-                                    disabled={isLoading}
-                                    className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white py-6 rounded-xl"
-                                >
-                                    {isLoading ? (
-                                        <span className="flex items-center gap-2">
-                                            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                            Sending...
-                                        </span>
-                                    ) : (
-                                        <span className="flex items-center gap-2">
-                                            Send Message
-                                            <Send className="w-4 h-4" />
-                                        </span>
-                                    )}
-                                </Button>
+                                <motion.div whileHover={{ scale: 1.015 }} whileTap={{ scale: 0.97 }}>
+                                    <Button
+                                        type="submit"
+                                        disabled={isLoading}
+                                        className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white py-6 rounded-xl shadow-lg shadow-blue-500/20 hover:shadow-blue-500/35 transition-shadow"
+                                    >
+                                        {isLoading ? (
+                                            <span className="flex items-center gap-2">
+                                                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                                Sending...
+                                            </span>
+                                        ) : (
+                                            <span className="flex items-center gap-2">
+                                                Send Message
+                                                <Send className="w-4 h-4" />
+                                            </span>
+                                        )}
+                                    </Button>
+                                </motion.div>
                             </form>
                         )}
                     </motion.div>

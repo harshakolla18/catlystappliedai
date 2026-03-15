@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import Navbar from '../components/home/Navbar';
 import Footer from '../components/home/Footer';
+import { fadeUp, staggerContainer, staggerItem } from '@/hooks/useFluidReveal';
 
 export default function TermsAndConditions() {
     const [showNav, setShowNav] = useState(false);
@@ -12,11 +14,19 @@ export default function TermsAndConditions() {
         return () => clearTimeout(timer);
     }, []);
 
-    const Section = ({ id, title, children }) => (
-        <section id={id} className="mb-12 scroll-mt-24">
+    const Section = ({ id, title, children, delay = 0 }) => (
+        <motion.section
+            id={id}
+            className="mb-12 scroll-mt-24"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            custom={delay}
+        >
             <h2 className="text-2xl font-bold text-white mb-6 pb-2 border-b border-blue-500/30">{title}</h2>
             <div className="text-slate-300 leading-relaxed space-y-4">{children}</div>
-        </section>
+        </motion.section>
     );
 
     const SubSection = ({ title, children }) => (
@@ -33,30 +43,42 @@ export default function TermsAndConditions() {
             {/* Hero */}
             <section className="relative pt-32 pb-12 overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent" />
-                <div className="relative z-10 max-w-4xl mx-auto px-4">
+                <motion.div
+                    className="relative z-10 max-w-4xl mx-auto px-4"
+                    variants={fadeUp}
+                    initial="hidden"
+                    animate="visible"
+                    custom={0}
+                >
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                         Terms & Conditions
                     </h1>
                     <p className="text-slate-400">Legal information for catalystappliedai.com</p>
-                </div>
+                </motion.div>
             </section>
 
             {/* Content */}
             <section className="py-12 px-4 pb-24">
                 <div className="max-w-4xl mx-auto">
                     {/* Quick Nav */}
-                    <div className="mb-12 p-6 rounded-2xl bg-slate-800/30 border border-slate-700/50">
+                    <motion.div
+                        className="mb-12 p-6 rounded-2xl bg-slate-800/30 border border-slate-700/50"
+                        variants={fadeUp}
+                        initial="hidden"
+                        animate="visible"
+                        custom={0.15}
+                    >
                         <h3 className="text-sm font-semibold text-blue-400 uppercase tracking-wider mb-4">Quick Navigation</h3>
                         <div className="flex flex-wrap gap-3">
-                            <a href="#terms-of-service" className="text-slate-300 hover:text-blue-400 text-sm transition-colors">Terms of Service</a>
+                            <a href="#terms-of-service" className="text-slate-300 hover:text-blue-400 text-sm transition-colors hover:translate-x-0.5 inline-block">Terms of Service</a>
                             <span className="text-slate-600">|</span>
-                            <a href="#privacy-policy" className="text-slate-300 hover:text-blue-400 text-sm transition-colors">Privacy Policy</a>
+                            <a href="#privacy-policy" className="text-slate-300 hover:text-blue-400 text-sm transition-colors hover:translate-x-0.5 inline-block">Privacy Policy</a>
                             <span className="text-slate-600">|</span>
-                            <a href="#ip-assignment" className="text-slate-300 hover:text-blue-400 text-sm transition-colors">IP Assignment</a>
+                            <a href="#ip-assignment" className="text-slate-300 hover:text-blue-400 text-sm transition-colors hover:translate-x-0.5 inline-block">IP Assignment</a>
                             <span className="text-slate-600">|</span>
-                            <a href="#nda" className="text-slate-300 hover:text-blue-400 text-sm transition-colors">NDA</a>
+                            <a href="#nda" className="text-slate-300 hover:text-blue-400 text-sm transition-colors hover:translate-x-0.5 inline-block">NDA</a>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* TERMS OF SERVICE */}
                     <Section id="terms-of-service" title="TERMS OF SERVICE">
@@ -114,7 +136,7 @@ export default function TermsAndConditions() {
                     </Section>
 
                     {/* PRIVACY POLICY */}
-                    <Section id="privacy-policy" title="PRIVACY POLICY">
+                    <Section id="privacy-policy" title="PRIVACY POLICY" delay={0.05}>
                         <p className="text-slate-400 text-sm mb-6">Last Updated: February 2, 2026</p>
 
                         <SubSection title="1. Who We Are">
@@ -183,7 +205,7 @@ export default function TermsAndConditions() {
                     </Section>
 
                     {/* IP ASSIGNMENT */}
-                    <Section id="ip-assignment" title="INTELLECTUAL PROPERTY ASSIGNMENT AGREEMENT">
+                    <Section id="ip-assignment" title="INTELLECTUAL PROPERTY ASSIGNMENT AGREEMENT" delay={0.1}>
                         <p className="text-slate-400 text-sm mb-6">Standalone IP Assignment for one-off contributors</p>
 
                         <SubSection title="Parties">
@@ -217,7 +239,7 @@ export default function TermsAndConditions() {
                     </Section>
 
                     {/* NDA */}
-                    <Section id="nda" title="MUTUAL NON-DISCLOSURE AGREEMENT">
+                    <Section id="nda" title="MUTUAL NON-DISCLOSURE AGREEMENT" delay={0.15}>
                         <p className="text-slate-400 text-sm mb-6">Contractor / Partner NDA (Standalone, generic)</p>
 
                         <SubSection title="Parties">

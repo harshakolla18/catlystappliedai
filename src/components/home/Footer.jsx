@@ -1,17 +1,31 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { Mail, MapPin } from 'lucide-react';
+import { fadeUp, staggerContainer, staggerItem, scaleUp } from '@/hooks/useFluidReveal';
 
 export default function Footer() {
     return (
-        <footer className="py-12 px-4 bg-[#060a14] border-t border-blue-500/10">
+        <motion.footer
+            className="py-12 px-4 bg-[#060a14] border-t border-blue-500/10"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.6 }}
+        >
             <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <motion.div
+                    className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8"
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: '-40px' }}
+                >
                     {/* Logo & Description */}
-                    <div className="md:col-span-1">
-                        <Link to={createPageUrl('Home')} className="flex items-center gap-3 hover:opacity-90 transition-opacity mb-4">
-                            <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center">
+                    <motion.div variants={staggerItem} className="md:col-span-1">
+                        <Link to={createPageUrl('Home')} className="flex items-center gap-3 hover:opacity-90 transition-opacity mb-4 group">
+                            <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
                                 <img src="/logo.jpg" alt="Catalyst Applied AI" className="w-full h-full object-cover" />
                             </div>
                             <span className="text-xl font-bold text-white">
@@ -21,79 +35,60 @@ export default function Footer() {
                         <p className="text-slate-400 text-sm">
                             Practical AI solutions that deliver real business results.
                         </p>
-                    </div>
+                    </motion.div>
 
                     {/* Services Links */}
-                    <div>
+                    <motion.div variants={staggerItem}>
                         <h4 className="text-white font-semibold mb-4">Services</h4>
                         <ul className="space-y-2">
-                            <li>
-                                <Link to={createPageUrl('ServiceDetail') + '?service=discovery-diagnostic'} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
-                                    Discovery & Diagnostic
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={createPageUrl('ServiceDetail') + '?service=custom-ai-solutions'} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
-                                    Custom AI Solutions
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={createPageUrl('ServiceDetail') + '?service=workflow-automation'} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
-                                    Workflow Automation
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={createPageUrl('ServiceDetail') + '?service=data-engineering'} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
-                                    Data Engineering
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={createPageUrl('ServiceDetail') + '?service=ai-implementation'} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
-                                    AI Tools Implementation
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={createPageUrl('ServiceDetail') + '?service=training-support'} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
-                                    Training & Enablement
-                                </Link>
-                            </li>
+                            {[
+                                { label: 'Discovery & Diagnostic', service: 'discovery-diagnostic' },
+                                { label: 'Custom AI Solutions', service: 'custom-ai-solutions' },
+                                { label: 'Workflow Automation', service: 'workflow-automation' },
+                                { label: 'Data Engineering', service: 'data-engineering' },
+                                { label: 'AI Tools Implementation', service: 'ai-implementation' },
+                                { label: 'Training & Enablement', service: 'training-support' },
+                            ].map(item => (
+                                <li key={item.service}>
+                                    <Link
+                                        to={createPageUrl('ServiceDetail') + `?service=${item.service}`}
+                                        className="text-slate-400 hover:text-blue-400 transition-colors text-sm inline-block hover:translate-x-1 transition-transform duration-200"
+                                    >
+                                        {item.label}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
-                    </div>
+                    </motion.div>
 
                     {/* Company Links */}
-                    <div>
+                    <motion.div variants={staggerItem}>
                         <h4 className="text-white font-semibold mb-4">Company</h4>
                         <ul className="space-y-2">
-                            <li>
-                                <Link to={createPageUrl('Home')} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
-                                    Home
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={createPageUrl('Products')} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
-                                    Products
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={createPageUrl('About')} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
-                                    About Us
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={createPageUrl('TermsAndConditions')} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
-                                    Terms & Conditions
-                                </Link>
-                            </li>
+                            {[
+                                { label: 'Home', page: 'Home' },
+                                { label: 'Products', page: 'Products' },
+                                { label: 'Terms & Conditions', page: 'TermsAndConditions' },
+                            ].map(item => (
+                                <li key={item.page}>
+                                    <Link
+                                        to={createPageUrl(item.page)}
+                                        className="text-slate-400 hover:text-blue-400 transition-colors text-sm inline-block hover:translate-x-1 transition-transform duration-200"
+                                    >
+                                        {item.label}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
-                    </div>
+                    </motion.div>
 
                     {/* Contact Info */}
-                    <div>
+                    <motion.div variants={staggerItem}>
                         <h4 className="text-white font-semibold mb-4">Contact</h4>
                         <ul className="space-y-3">
                             <li>
-                                <a href="mailto:sales@catalystappliedai.com" className="text-slate-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
-                                    <Mail className="w-4 h-4" />
+                                <a href="mailto:sales@catalystappliedai.com" className="text-slate-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2 group">
+                                    <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
                                     sales@catalystappliedai.com
                                 </a>
                             </li>
@@ -103,12 +98,23 @@ export default function Footer() {
                             </li>
                         </ul>
                         
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
 
                 {/* NVIDIA Inception Partner Badge */}
-                <div className="flex justify-center my-8">
-                    <div className="flex items-center bg-black rounded-lg overflow-hidden">
+                <motion.div
+                    className="flex justify-center my-8"
+                    variants={scaleUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: '-40px' }}
+                    custom={0}
+                >
+                    <motion.div
+                        className="flex items-center bg-black rounded-lg overflow-hidden"
+                        whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(118, 185, 0, 0.15)' }}
+                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    >
                         {/* Company Logo Side */}
                         <div className="flex items-center justify-center px-4 py-3 bg-black">
                             <img src="/logo.jpg" alt="Catalyst Applied AI" className="h-10 object-contain" />
@@ -121,19 +127,25 @@ export default function Footer() {
                                 className="h-10 object-contain"
                             />
                         </div>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
 
                 {/* Copyright & Legal */}
-                <div className="pt-8 border-t border-slate-800 text-center">
+                <motion.div
+                    className="pt-8 border-t border-slate-800 text-center"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                >
                     <p className="text-slate-400 text-sm">
                         Copyright © {new Date().getFullYear()} Catalyst Applied AI - All Rights Reserved.
                     </p>
                     <p className="text-slate-500 text-xs mt-2">
                         © {new Date().getFullYear()} NVIDIA, the NVIDIA logo, and NVIDIA Inception are trademarks and/or registered trademarks of NVIDIA Corporation in the U.S. and other countries.
                     </p>
-                </div>
+                </motion.div>
             </div>
-        </footer>
+        </motion.footer>
     );
 }

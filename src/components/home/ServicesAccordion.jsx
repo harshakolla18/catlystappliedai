@@ -1,6 +1,8 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { InteractiveImageAccordion } from '../ui/interactive-image-accordion';
 import { createPageUrl } from '@/utils';
+import { fadeUp } from '@/hooks/useFluidReveal';
 
 // Catalyst Applied AI Services with relevant images and links
 const servicesData = [
@@ -44,7 +46,15 @@ const servicesData = [
 
 export default function ServicesAccordion() {
     return (
-        <section id="services" className="bg-[#060a14] text-white">
+        <motion.section
+            id="services"
+            className="bg-[#060a14] text-white"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            custom={0}
+        >
             <InteractiveImageAccordion
                 items={servicesData}
                 title={
@@ -58,6 +68,6 @@ export default function ServicesAccordion() {
                 defaultActiveIndex={1}
                 className="bg-[#060a14] text-white"
             />
-        </section>
+        </motion.section>
     );
 }

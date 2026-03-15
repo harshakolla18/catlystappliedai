@@ -75,14 +75,63 @@
     }
 }
 
+/* ─── Global Fluid Feel ─── */
 
+html {
+    scroll-behavior: smooth;
+}
 
 @layer base {
     * {
         @apply border-border outline-ring/50;
     }
 
+    html,
     body {
-        @apply bg-background text-foreground;
+        background-color: #060a14;
+        @apply text-foreground;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
+}
+
+/* ─── Fluid interactive elements ─── */
+
+/* Buttons: globally silky transitions */
+button,
+a,
+[role="button"] {
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                color 0.25s ease,
+                background-color 0.25s ease,
+                border-color 0.25s ease,
+                opacity 0.25s ease;
+}
+
+/* Smooth image loading feel */
+img {
+    transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Scrollbar styling for dark theme */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(6, 10, 20, 0.5);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.25);
+    border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(59, 130, 246, 0.45);
+}
+
+/* Selection color */
+::selection {
+    background: rgba(59, 130, 246, 0.3);
+    color: white;
 }
