@@ -14,14 +14,30 @@ export default function ContactSection() {
     });
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(null);
         setIsLoading(true);
-        // Simulate submission
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        setIsLoading(false);
-        setIsSubmitted(true);
+        try {
+            const base = import.meta.env.VITE_API_URL || '';
+            const res = await fetch(`${base}/api/send-email`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok) {
+                throw new Error(data.error || `Request failed (${res.status})`);
+            }
+            setIsSubmitted(true);
+            setFormData({ name: '', email: '', company: '', message: '' });
+        } catch (err) {
+            setError(err.message || 'Something went wrong. Please try again or email us directly.');
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -164,6 +180,11 @@ export default function ContactSection() {
                                         required
                                     />
                                 </div>
+                                {error && (
+                                    <p className="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-3">
+                                        {error}
+                                    </p>
+                                )}
                                 <Button
                                     type="submit"
                                     disabled={isLoading}
