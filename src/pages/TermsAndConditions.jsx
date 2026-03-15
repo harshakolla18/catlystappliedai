@@ -14,25 +14,25 @@ export default function TermsAndConditions() {
 
     const Section = ({ id, title, children }) => (
         <section id={id} className="mb-12 scroll-mt-24">
-            <h2 className="text-2xl font-bold text-white mb-6 pb-2 border-b border-cyan-500/30">{title}</h2>
+            <h2 className="text-2xl font-bold text-white mb-6 pb-2 border-b border-blue-500/30">{title}</h2>
             <div className="text-slate-300 leading-relaxed space-y-4">{children}</div>
         </section>
     );
 
     const SubSection = ({ title, children }) => (
         <div className="mb-6">
-            <h3 className="text-lg font-semibold text-cyan-400 mb-3">{title}</h3>
+            <h3 className="text-lg font-semibold text-blue-400 mb-3">{title}</h3>
             <div className="text-slate-300 space-y-2">{children}</div>
         </div>
     );
 
     return (
-        <div className="min-h-screen bg-[#1a1f2e]">
+        <div className="min-h-screen bg-[#060a14]">
             <Navbar showNav={showNav} />
 
             {/* Hero */}
             <section className="relative pt-32 pb-12 overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-900/20 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent" />
                 <div className="relative z-10 max-w-4xl mx-auto px-4">
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                         Terms & Conditions
@@ -46,15 +46,15 @@ export default function TermsAndConditions() {
                 <div className="max-w-4xl mx-auto">
                     {/* Quick Nav */}
                     <div className="mb-12 p-6 rounded-2xl bg-slate-800/30 border border-slate-700/50">
-                        <h3 className="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-4">Quick Navigation</h3>
+                        <h3 className="text-sm font-semibold text-blue-400 uppercase tracking-wider mb-4">Quick Navigation</h3>
                         <div className="flex flex-wrap gap-3">
-                            <a href="#terms-of-service" className="text-slate-300 hover:text-cyan-400 text-sm transition-colors">Terms of Service</a>
+                            <a href="#terms-of-service" className="text-slate-300 hover:text-blue-400 text-sm transition-colors">Terms of Service</a>
                             <span className="text-slate-600">|</span>
-                            <a href="#privacy-policy" className="text-slate-300 hover:text-cyan-400 text-sm transition-colors">Privacy Policy</a>
+                            <a href="#privacy-policy" className="text-slate-300 hover:text-blue-400 text-sm transition-colors">Privacy Policy</a>
                             <span className="text-slate-600">|</span>
-                            <a href="#ip-assignment" className="text-slate-300 hover:text-cyan-400 text-sm transition-colors">IP Assignment</a>
+                            <a href="#ip-assignment" className="text-slate-300 hover:text-blue-400 text-sm transition-colors">IP Assignment</a>
                             <span className="text-slate-600">|</span>
-                            <a href="#nda" className="text-slate-300 hover:text-cyan-400 text-sm transition-colors">NDA</a>
+                            <a href="#nda" className="text-slate-300 hover:text-blue-400 text-sm transition-colors">NDA</a>
                         </div>
                     </div>
 

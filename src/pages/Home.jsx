@@ -16,7 +16,7 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-[#1a1f2e]">
+        <div className="min-h-screen bg-[#060a14]">
             {/* Navbar */}
             <Navbar showNav={showNav} />
 

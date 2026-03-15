@@ -30,9 +30,9 @@ const capabilities = [
 
 export default function AboutSection() {
     return (
-        <section className="py-24 px-4 bg-gradient-to-b from-slate-900/50 to-[#1a1f2e] relative overflow-hidden">
+        <section className="py-24 px-4 bg-gradient-to-b from-[#080e1c]/50 to-[#060a14] relative overflow-hidden">
             {/* Decorative elements */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-cyan-500/5 rounded-full blur-3xl" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-3xl" />
 
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -43,11 +43,11 @@ export default function AboutSection() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <span className="text-cyan-400 text-sm font-semibold tracking-widest uppercase">
+                        <span className="text-blue-400 text-sm font-semibold tracking-widest uppercase">
                             Who We Are
                         </span>
                         <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6 leading-tight">
-                            Empowering <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">AI Solutions</span>
+                            Empowering <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-400">AI Solutions</span>
                         </h2>
                         <p className="text-slate-300 text-lg leading-relaxed mb-8">
                             Catalyst Applied AI helps organizations identify, design, and implement practical AI solutions.
@@ -56,15 +56,15 @@ export default function AboutSection() {
 
                         {/* Values */}
                         <div className="grid grid-cols-3 gap-6 mb-8">
-                            <div className="text-center p-4 rounded-xl bg-slate-800/50 border border-slate-700">
-                                <div className="text-2xl font-bold text-cyan-400">Innovation</div>
+                            <div className="text-center p-4 rounded-xl bg-[#0d1425]/60 border border-blue-500/10">
+                                <div className="text-2xl font-bold text-blue-400">Innovation</div>
                                 <div className="text-sm text-slate-400 mt-1">Cutting-Edge Solutions</div>
                             </div>
-                            <div className="text-center p-4 rounded-xl bg-slate-800/50 border border-slate-700">
-                                <div className="text-2xl font-bold text-cyan-400">Quality</div>
+                            <div className="text-center p-4 rounded-xl bg-[#0d1425]/60 border border-blue-500/10">
+                                <div className="text-2xl font-bold text-blue-400">Quality</div>
                                 <div className="text-sm text-slate-400 mt-1">Excellence in Delivery</div>
                             </div>
-                            <div className="text-center p-4 rounded-xl bg-slate-800/50 border border-slate-700">
+                            <div className="text-center p-4 rounded-xl bg-[#0d1425]/60 border border-blue-500/10">
                                 <div className="text-2xl font-bold text-blue-400">Trust</div>
                                 <div className="text-sm text-slate-400 mt-1">Client-Focused Approach</div>
                             </div>
@@ -72,7 +72,7 @@ export default function AboutSection() {
 
                         {/* Learn More Button */}
                         <Link to={createPageUrl('About')}>
-                            <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-3 rounded-xl">
+                            <Button className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-6 py-3 rounded-xl">
                                 Learn More About Us
                                 <ArrowRight className="ml-2 w-4 h-4" />
                             </Button>
@@ -94,10 +94,10 @@ export default function AboutSection() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.4, delay: 0.1 * index }}
-                                className="group p-6 rounded-2xl bg-slate-800/30 border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300 hover:bg-slate-800/50"
+                                className="group p-6 rounded-2xl bg-[#0d1425]/40 border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300 hover:bg-[#0d1425]/60"
                             >
-                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                    <cap.icon className="w-6 h-6 text-cyan-400" />
+                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/15 to-blue-600/15 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                    <cap.icon className="w-6 h-6 text-blue-400" />
                                 </div>
                                 <h3 className="text-lg font-semibold text-white mb-2">{cap.title}</h3>
                                 <p className="text-slate-400 text-sm">{cap.description}</p>

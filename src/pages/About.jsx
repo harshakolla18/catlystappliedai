@@ -58,7 +58,7 @@ const team = [
         role: 'Director, Software Engineering',
         bio: 'Experienced engineering leader specializing in building scalable software systems and high-performing technical teams.',
         image: '/harshakolla.jpg',
-        color: 'from-cyan-600 to-blue-600',
+        color: 'from-blue-500 to-blue-600',
         imageClass: 'object-top scale-110 brightness-110 contrast-110 saturate-110',
         addBorder: true
     }
@@ -106,12 +106,12 @@ export default function About() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-[#1a1f2e]">
+        <div className="min-h-screen bg-[#060a14]">
             <Navbar showNav={showNav} />
 
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-900/20 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/15 via-transparent to-transparent" />
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
                     <motion.div
@@ -119,10 +119,10 @@ export default function About() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <span className="text-cyan-400 text-sm font-semibold tracking-widest uppercase">About Us</span>
+                        <span className="text-blue-400 text-sm font-semibold tracking-widest uppercase">About Us</span>
                         <h1 className="text-4xl md:text-6xl font-bold text-white mt-4 mb-6">
                             Transforming Business Through{' '}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-400">
                                 Practical AI
                             </span>
                         </h1>
@@ -142,10 +142,10 @@ export default function About() {
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="p-8 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/20"
+                            className="p-8 rounded-2xl bg-gradient-to-br from-blue-500/10 to-blue-600/10 border border-blue-500/15"
                         >
-                            <div className="w-14 h-14 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-6">
-                                <Target className="w-7 h-7 text-cyan-400" />
+                            <div className="w-14 h-14 rounded-xl bg-blue-500/15 flex items-center justify-center mb-6">
+                                <Target className="w-7 h-7 text-blue-400" />
                             </div>
                             <h2 className="text-2xl font-bold text-white mb-4">Our Mission</h2>
                             <p className="text-slate-300 leading-relaxed">
@@ -159,10 +159,10 @@ export default function About() {
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="p-8 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/20"
+                            className="p-8 rounded-2xl bg-gradient-to-br from-blue-500/10 to-blue-600/10 border border-blue-500/15"
                         >
-                            <div className="w-14 h-14 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-6">
-                                <Eye className="w-7 h-7 text-cyan-400" />
+                            <div className="w-14 h-14 rounded-xl bg-blue-500/15 flex items-center justify-center mb-6">
+                                <Eye className="w-7 h-7 text-blue-400" />
                             </div>
                             <h2 className="text-2xl font-bold text-white mb-4">Our Vision</h2>
                             <p className="text-slate-300 leading-relaxed">
@@ -176,10 +176,10 @@ export default function About() {
             </section>
 
             {/* Core Values */}
-            <section className="py-20 px-4 bg-slate-900/30">
+            <section className="py-20 px-4 bg-[#0d1425]/30">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <span className="text-cyan-400 text-sm font-semibold tracking-widest uppercase">What Drives Us</span>
+                        <span className="text-blue-400 text-sm font-semibold tracking-widest uppercase">What Drives Us</span>
                         <h2 className="text-3xl md:text-4xl font-bold text-white mt-4">Our Core Values</h2>
                     </div>
 
@@ -191,10 +191,10 @@ export default function About() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="p-6 rounded-2xl bg-slate-800/30 border border-slate-700/50 hover:border-cyan-500/50 transition-colors"
+                                className="p-6 rounded-2xl bg-slate-800/30 border border-slate-700/50 hover:border-blue-500/30 transition-colors"
                             >
-                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center mb-4">
-                                    <value.icon className="w-6 h-6 text-cyan-400" />
+                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/15 to-blue-600/15 flex items-center justify-center mb-4">
+                                    <value.icon className="w-6 h-6 text-blue-400" />
                                 </div>
                                 <h3 className="text-lg font-semibold text-white mb-2">{value.title}</h3>
                                 <p className="text-slate-400 text-sm">{value.description}</p>
@@ -208,7 +208,7 @@ export default function About() {
             <section className="py-20 px-4">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <span className="text-cyan-400 text-sm font-semibold tracking-widest uppercase">Our Team</span>
+                        <span className="text-blue-400 text-sm font-semibold tracking-widest uppercase">Our Team</span>
                         <h2 className="text-3xl md:text-4xl font-bold text-white mt-4 mb-4">Meet the Experts</h2>
                         <p className="text-slate-400 max-w-2xl mx-auto">
                             Our diverse team brings together decades of experience in AI, engineering,
@@ -227,7 +227,7 @@ export default function About() {
                                 className="group p-6 rounded-2xl bg-slate-800/30 border border-slate-700/50 hover:bg-slate-800/50 transition-all duration-300"
                             >
                                 <div className="relative w-40 h-40 mx-auto mb-6">
-                                    <div className={`absolute inset-0 bg-gradient-to-br ${member.color || 'from-cyan-500 to-blue-500'} blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500`} />
+                                    <div className={`absolute inset-0 bg-gradient-to-br ${member.color || 'from-blue-500 to-blue-600'} blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500`} />
                                     <div className={`relative w-full h-full rounded-full shadow-xl group-hover:scale-105 transition-transform duration-500 ${member.addBorder ? 'bg-black flex items-center justify-center' : 'overflow-hidden border-2 border-slate-700/50'}`}>
                                         {member.addBorder ? (
                                             <div className="w-[85%] h-[85%] rounded-full overflow-hidden relative">
@@ -263,7 +263,7 @@ export default function About() {
                                         )}
                                     </div>
 
-                                    <p className={`text-sm font-bold mb-3 bg-gradient-to-r ${member.color || 'from-cyan-400 to-blue-400'} bg-clip-text text-transparent`}>
+                                    <p className={`text-sm font-bold mb-3 bg-gradient-to-r ${member.color || 'from-blue-400 to-sky-400'} bg-clip-text text-transparent`}>
                                         {member.role}
                                     </p>
 
@@ -277,10 +277,10 @@ export default function About() {
             */}
 
             {/* Timeline */}
-            <section className="py-20 px-4 bg-slate-900/30">
+            <section className="py-20 px-4 bg-[#0d1425]/30">
                 <div className="max-w-4xl mx-auto">
                     <div className="text-center mb-16">
-                        <span className="text-cyan-400 text-sm font-semibold tracking-widest uppercase">Our Journey</span>
+                        <span className="text-blue-400 text-sm font-semibold tracking-widest uppercase">Our Journey</span>
                         <h2 className="text-3xl md:text-4xl font-bold text-white mt-4">Company Milestones</h2>
                     </div>
 
@@ -300,11 +300,11 @@ export default function About() {
                                         }`}
                                 >
                                     {/* Timeline dot */}
-                                    <div className="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-cyan-500 border-4 border-[#1a1f2e] md:-translate-x-1/2 z-10" />
+                                    <div className="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-[#060a14] md:-translate-x-1/2 z-10" />
 
                                     {/* Content */}
                                     <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
-                                        <span className="text-cyan-400 font-bold text-lg">{milestone.year}</span>
+                                        <span className="text-blue-400 font-bold text-lg">{milestone.year}</span>
                                         <h3 className="text-xl font-semibold text-white mt-1">{milestone.title}</h3>
                                         <p className="text-slate-400 mt-2">{milestone.description}</p>
                                     </div>
@@ -327,7 +327,7 @@ export default function About() {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button
                             onClick={() => window.location.href = 'mailto:sales@catalystappliedai.com?subject=Partnership%20Inquiry'}
-                            className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-cyan-500/25"
+                            className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-blue-500/20"
                         >
                             Get in Touch
                             <ArrowRight className="ml-2 w-5 h-5" />

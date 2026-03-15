@@ -44,19 +44,19 @@ const servicesData = [
 
 export default function ServicesAccordion() {
     return (
-        <section id="services" className="bg-[#1a1f2e] text-white">
+        <section id="services" className="bg-[#060a14] text-white">
             <InteractiveImageAccordion
                 items={servicesData}
                 title={
                     <>
-                        Practical <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">AI Solutions</span> for Your Business
+                        Practical <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-400">AI Solutions</span> for Your Business
                     </>
                 }
                 subtitle="We bridge the gap between potential and performance. From discovery to deployment, our comprehensive services transform how you work with AI. Click any service to learn more."
                 ctaText="Book Your ROI Assessment"
                 ctaHref="mailto:sales@catalystappliedai.com?subject=Request%20for%20Information"
                 defaultActiveIndex={1}
-                className="bg-[#1a1f2e] text-white"
+                className="bg-[#060a14] text-white"
             />
         </section>
     );

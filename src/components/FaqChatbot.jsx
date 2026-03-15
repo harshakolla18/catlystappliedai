@@ -108,7 +108,7 @@ export default function FaqChatbot() {
             {/* Chat Button */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 flex items-center justify-center transition-all duration-300 hover:scale-110 ${isOpen ? 'rotate-0' : 'rotate-0'}`}
+                className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/20 flex items-center justify-center transition-all duration-300 hover:scale-110 ${isOpen ? 'rotate-0' : 'rotate-0'}`}
             >
                 {isOpen ? (
                     <X className="w-6 h-6" />
@@ -119,16 +119,16 @@ export default function FaqChatbot() {
 
             {/* Chat Window */}
             {isOpen && (
-                <div className="fixed bottom-24 right-6 z-50 w-80 sm:w-96 bg-[#1a1f2e] rounded-2xl shadow-2xl border border-slate-700/50 overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
+                <div className="fixed bottom-24 right-6 z-50 w-80 sm:w-96 bg-[#060a14] rounded-2xl shadow-2xl border border-blue-500/15 overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
                     {/* Header */}
-                    <div className="bg-gradient-to-r from-cyan-500 to-blue-600 p-4">
+                    <div className="bg-gradient-to-r from-blue-600 to-blue-500 p-4">
                         <div className="flex items-center gap-3">
                             <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                                 <MessageCircle className="w-5 h-5 text-white" />
                             </div>
                             <div>
                                 <h3 className="text-white font-semibold">Catalyst AI Assistant</h3>
-                                <p className="text-cyan-100 text-xs">Here to help with your questions</p>
+                                <p className="text-blue-100 text-xs">Here to help with your questions</p>
                             </div>
                         </div>
                     </div>
@@ -143,7 +143,7 @@ export default function FaqChatbot() {
                                 <div
                                     className={`max-w-[85%] p-3 rounded-2xl text-sm ${
                                         msg.type === 'user'
-                                            ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-br-md'
+                                            ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-br-md'
                                             : 'bg-slate-800 text-slate-200 rounded-bl-md'
                                     }`}
                                 >
@@ -154,7 +154,7 @@ export default function FaqChatbot() {
                     </div>
 
                     {/* Search & FAQ Options */}
-                    <div className="border-t border-slate-700/50 p-4 bg-slate-900/50">
+                    <div className="border-t border-blue-500/10 p-4 bg-[#0d1425]/50">
                         {/* Search Bar */}
                         <div className="relative mb-3">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -163,7 +163,7 @@ export default function FaqChatbot() {
                                 placeholder="Search FAQs..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full pl-10 pr-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
+                                className="w-full pl-10 pr-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
                             />
                         </div>
 
@@ -179,7 +179,7 @@ export default function FaqChatbot() {
                                         className="w-full text-left p-2 rounded-lg bg-slate-800/50 hover:bg-slate-700/50 text-slate-300 text-sm flex items-center justify-between group transition-colors"
                                     >
                                         <span className="truncate pr-2">{faq.question}</span>
-                                        <ChevronRight className="w-4 h-4 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                                        <ChevronRight className="w-4 h-4 text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                                     </button>
                                 ))
                             ) : (
@@ -190,7 +190,7 @@ export default function FaqChatbot() {
                         {messages.length > 1 && (
                             <button
                                 onClick={resetChat}
-                                className="mt-3 text-xs text-cyan-400 hover:text-cyan-300 transition-colors"
+                                className="mt-3 text-xs text-blue-400 hover:text-blue-300 transition-colors"
                             >
                                 Start new conversation
                             </button>

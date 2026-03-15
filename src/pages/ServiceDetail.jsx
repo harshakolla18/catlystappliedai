@@ -160,7 +160,7 @@ export default function ServiceDetail() {
     const nextService = currentIndex < serviceKeys.length - 1 ? serviceKeys[currentIndex + 1] : null;
 
     return (
-        <div className="min-h-screen bg-[#1a1f2e]">
+        <div className="min-h-screen bg-[#060a14]">
             <Navbar showNav={true} />
 
             {/* Hero Section */}
@@ -171,13 +171,13 @@ export default function ServiceDetail() {
                         alt={service.title}
                         className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#1a1f2e] via-[#1a1f2e]/95 to-[#1a1f2e]/80" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#060a14] via-[#060a14]/95 to-[#060a14]/80" />
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4">
                     <Link
                         to={createPageUrl('Home')}
-                        className="inline-flex items-center gap-2 text-slate-400 hover:text-cyan-400 mb-8 transition-colors"
+                        className="inline-flex items-center gap-2 text-slate-400 hover:text-blue-400 mb-8 transition-colors"
                     >
                         <ArrowLeft className="w-4 h-4" />
                         Back to Home
@@ -189,7 +189,7 @@ export default function ServiceDetail() {
                         transition={{ duration: 0.5 }}
                         key={serviceId}
                     >
-                        <span className="text-cyan-400 text-sm font-semibold tracking-widest uppercase">Our Services</span>
+                        <span className="text-blue-400 text-sm font-semibold tracking-widest uppercase">Our Services</span>
                         <h1 className="text-4xl md:text-6xl font-bold text-white mt-4 mb-6">{service.title}</h1>
                         <p className="text-xl text-slate-300 max-w-2xl">{service.subtitle}</p>
                     </motion.div>
@@ -197,7 +197,7 @@ export default function ServiceDetail() {
             </section>
 
             {/* Stats Bar */}
-            <section className="bg-slate-900/50 border-y border-slate-700/50">
+            <section className="bg-[#0d1425]/50 border-y border-blue-500/10">
                 <div className="max-w-7xl mx-auto px-4 py-8">
                     <div className="grid grid-cols-3 gap-8">
                         {service.stats.map((stat, index) => (
@@ -208,7 +208,7 @@ export default function ServiceDetail() {
                                 transition={{ delay: index * 0.1 }}
                                 className="text-center"
                             >
-                                <div className="text-3xl md:text-4xl font-bold text-cyan-400">{stat.value}</div>
+                                <div className="text-3xl md:text-4xl font-bold text-blue-400">{stat.value}</div>
                                 <div className="text-slate-400 text-sm mt-1">{stat.label}</div>
                             </motion.div>
                         ))}
@@ -228,7 +228,7 @@ export default function ServiceDetail() {
                             <ul className="space-y-3">
                                 {service.benefits.map((benefit, index) => (
                                     <li key={index} className="flex items-start gap-3">
-                                        <CheckCircle className="w-5 h-5 text-cyan-400 mt-0.5 shrink-0" />
+                                        <CheckCircle className="w-5 h-5 text-blue-400 mt-0.5 shrink-0" />
                                         <span className="text-slate-300">{benefit}</span>
                                     </li>
                                 ))}
@@ -248,7 +248,7 @@ export default function ServiceDetail() {
                                         transition={{ delay: index * 0.1 }}
                                         className="flex gap-4"
                                     >
-                                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center shrink-0 text-white font-bold">
+                                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-blue-500 flex items-center justify-center shrink-0 text-white font-bold">
                                             {item.step}
                                         </div>
                                         <div>
@@ -274,7 +274,7 @@ export default function ServiceDetail() {
                     </p>
                     <Button
                         onClick={() => window.location.href = `mailto:sales@catalystappliedai.com?subject=${encodeURIComponent(service.title)} Inquiry`}
-                        className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-10 py-6 text-lg rounded-xl shadow-lg shadow-cyan-500/25"
+                        className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-10 py-6 text-lg rounded-xl shadow-lg shadow-blue-500/20"
                     >
                         Schedule a Consultation
                         <ArrowRight className="ml-2 w-5 h-5" />
@@ -283,12 +283,12 @@ export default function ServiceDetail() {
             </section>
 
             {/* Navigation */}
-            <section className="py-8 px-4 border-t border-slate-700/50">
+            <section className="py-8 px-4 border-t border-blue-500/10">
                 <div className="max-w-7xl mx-auto flex justify-between">
                     {prevService ? (
                         <Link
                             to={createPageUrl('ServiceDetail') + `?service=${prevService}`}
-                            className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition-colors"
+                            className="flex items-center gap-2 text-slate-400 hover:text-blue-400 transition-colors"
                         >
                             <ArrowLeft className="w-4 h-4" />
                             {servicesData[prevService].title}
@@ -297,7 +297,7 @@ export default function ServiceDetail() {
                     {nextService && (
                         <Link
                             to={createPageUrl('ServiceDetail') + `?service=${nextService}`}
-                            className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition-colors"
+                            className="flex items-center gap-2 text-slate-400 hover:text-blue-400 transition-colors"
                         >
                             {servicesData[nextService].title}
                             <ArrowRight className="w-4 h-4" />

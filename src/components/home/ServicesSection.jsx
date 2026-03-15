@@ -21,7 +21,7 @@ const services = [
             "Get a tailored AI readiness score",
             "Clear, actionable strategy aligned with goals"
         ],
-        gradient: "from-teal-500 to-cyan-500"
+        gradient: "from-blue-400 to-blue-500"
     },
     {
         icon: Cpu,
@@ -33,7 +33,7 @@ const services = [
             "Create AI agents for repetitive tasks",
             "Engineer solutions tailored to workflows"
         ],
-        gradient: "from-cyan-500 to-blue-500"
+        gradient: "from-blue-500 to-blue-600"
     },
     {
         icon: GitBranch,
@@ -45,7 +45,7 @@ const services = [
             "Orchestrate multi-step workflows",
             "Reduce manual errors and speed up cycles"
         ],
-        gradient: "from-blue-500 to-indigo-500"
+        gradient: "from-blue-500 to-sky-500"
     },
     {
         icon: Database,
@@ -57,7 +57,7 @@ const services = [
             "Clean, structure, and label data for accuracy",
             "Implement dashboards for real-time insights"
         ],
-        gradient: "from-indigo-500 to-purple-500"
+        gradient: "from-blue-600 to-blue-700"
     },
     {
         icon: Settings,
@@ -69,7 +69,7 @@ const services = [
             "Build prompt libraries and workflow templates",
             "Ensure seamless adoption without disruption"
         ],
-        gradient: "from-purple-500 to-pink-500"
+        gradient: "from-sky-500 to-blue-500"
     },
     {
         icon: GraduationCap,
@@ -81,7 +81,7 @@ const services = [
             "Confidence building for your entire team",
             "Live sessions with Q&A and ongoing support"
         ],
-        gradient: "from-pink-500 to-rose-500"
+        gradient: "from-blue-400 to-sky-400"
     }
 ];
 
@@ -109,9 +109,9 @@ const itemVariants = {
 
 export default function ServicesSection() {
     return (
-        <section className="py-24 px-4 bg-slate-950 relative overflow-hidden">
+        <section className="py-24 px-4 bg-[#060a14] relative overflow-hidden">
             {/* Background decoration */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-teal-900/20 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/15 via-transparent to-transparent" />
 
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Section Header */}
@@ -122,7 +122,7 @@ export default function ServicesSection() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <span className="text-teal-400 text-sm font-semibold tracking-widest uppercase">What We Offer</span>
+                    <span className="text-blue-400 text-sm font-semibold tracking-widest uppercase">What We Offer</span>
                     <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
                         Our Services
                     </h2>
@@ -146,7 +146,7 @@ export default function ServicesSection() {
                             variants={itemVariants}
                             className="group relative"
                         >
-                            <div className="h-full p-8 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-teal-500/50 transition-all duration-500 hover:bg-slate-900/80 backdrop-blur-sm">
+                            <div className="h-full p-8 rounded-2xl bg-[#0d1425]/60 border border-blue-500/10 hover:border-blue-500/30 transition-all duration-500 hover:bg-[#0d1425]/80 backdrop-blur-sm">
                                 {/* Icon */}
                                 <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.gradient} p-0.5 mb-6`}>
                                     <div className="w-full h-full rounded-xl bg-slate-900 flex items-center justify-center">
@@ -155,7 +155,7 @@ export default function ServicesSection() {
                                 </div>
 
                                 {/* Title */}
-                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors">
+                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
                                     {service.title}
                                 </h3>
 
@@ -168,14 +168,14 @@ export default function ServicesSection() {
                                 <ul className="space-y-2 mb-6">
                                     {service.features.map((feature, idx) => (
                                         <li key={idx} className="flex items-start gap-2 text-sm text-slate-300">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-2 shrink-0" />
+                                            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 shrink-0" />
                                             {feature}
                                         </li>
                                     ))}
                                 </ul>
 
                                 {/* Learn More Link */}
-                                <div className="flex items-center gap-2 text-teal-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div className="flex items-center gap-2 text-blue-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                                     <span>Learn more</span>
                                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                 </div>

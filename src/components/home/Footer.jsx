@@ -5,7 +5,7 @@ import { Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
     return (
-        <footer className="py-12 px-4 bg-[#1a1f2e] border-t border-slate-700/50">
+        <footer className="py-12 px-4 bg-[#060a14] border-t border-blue-500/10">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                     {/* Logo & Description */}
@@ -28,32 +28,32 @@ export default function Footer() {
                         <h4 className="text-white font-semibold mb-4">Services</h4>
                         <ul className="space-y-2">
                             <li>
-                                <Link to={createPageUrl('ServiceDetail') + '?service=discovery-diagnostic'} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
+                                <Link to={createPageUrl('ServiceDetail') + '?service=discovery-diagnostic'} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
                                     Discovery & Diagnostic
                                 </Link>
                             </li>
                             <li>
-                                <Link to={createPageUrl('ServiceDetail') + '?service=custom-ai-solutions'} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
+                                <Link to={createPageUrl('ServiceDetail') + '?service=custom-ai-solutions'} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
                                     Custom AI Solutions
                                 </Link>
                             </li>
                             <li>
-                                <Link to={createPageUrl('ServiceDetail') + '?service=workflow-automation'} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
+                                <Link to={createPageUrl('ServiceDetail') + '?service=workflow-automation'} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
                                     Workflow Automation
                                 </Link>
                             </li>
                             <li>
-                                <Link to={createPageUrl('ServiceDetail') + '?service=data-engineering'} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
+                                <Link to={createPageUrl('ServiceDetail') + '?service=data-engineering'} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
                                     Data Engineering
                                 </Link>
                             </li>
                             <li>
-                                <Link to={createPageUrl('ServiceDetail') + '?service=ai-implementation'} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
+                                <Link to={createPageUrl('ServiceDetail') + '?service=ai-implementation'} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
                                     AI Tools Implementation
                                 </Link>
                             </li>
                             <li>
-                                <Link to={createPageUrl('ServiceDetail') + '?service=training-support'} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
+                                <Link to={createPageUrl('ServiceDetail') + '?service=training-support'} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
                                     Training & Enablement
                                 </Link>
                             </li>
@@ -65,22 +65,22 @@ export default function Footer() {
                         <h4 className="text-white font-semibold mb-4">Company</h4>
                         <ul className="space-y-2">
                             <li>
-                                <Link to={createPageUrl('Home')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
+                                <Link to={createPageUrl('Home')} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
                                     Home
                                 </Link>
                             </li>
                             <li>
-                                <Link to={createPageUrl('Products')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
+                                <Link to={createPageUrl('Products')} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
                                     Products
                                 </Link>
                             </li>
                             <li>
-                                <Link to={createPageUrl('About')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
+                                <Link to={createPageUrl('About')} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
                                     About Us
                                 </Link>
                             </li>
                             <li>
-                                <Link to={createPageUrl('TermsAndConditions')} className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
+                                <Link to={createPageUrl('TermsAndConditions')} className="text-slate-400 hover:text-blue-400 transition-colors text-sm">
                                     Terms & Conditions
                                 </Link>
                             </li>
@@ -92,7 +92,7 @@ export default function Footer() {
                         <h4 className="text-white font-semibold mb-4">Contact</h4>
                         <ul className="space-y-3">
                             <li>
-                                <a href="mailto:sales@catalystappliedai.com" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm flex items-center gap-2">
+                                <a href="mailto:sales@catalystappliedai.com" className="text-slate-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2">
                                     <Mail className="w-4 h-4" />
                                     sales@catalystappliedai.com
                                 </a>
